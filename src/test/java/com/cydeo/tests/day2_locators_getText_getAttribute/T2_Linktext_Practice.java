@@ -8,9 +8,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class T2_Linktext_Practice {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
-        //1. Opern Chrome browser
+        //1. Open Chrome browser
 
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
@@ -30,9 +30,31 @@ public class T2_Linktext_Practice {
         // 4.Verify title is:
         // Expected: No A/B Test
 
+        String expectedTitle = "No A/B Test";
+        String actualTitle = driver.getTitle();
 
+        if (actualTitle.equals(expectedTitle)) {
+            System.out.println("Title verification PASS!");
+        }else {
+            System.out.println("Title verification FAILED!!!");
+        }
+        Thread.sleep(3000);
 
         // 5. Go back to home page by using the .back();
+        driver.navigate().back();
+
+        // 6. Verify title equals
+        // Expected: Practice
+
+        String expectedTitle2 = "Practice";
+        String actualTile2 = driver.getTitle();
+
+        if (actualTile2.equals(expectedTitle2)) {
+            System.out.println("Title verification PASSED!");
+        }else {
+            System.out.println("Title verification FAILED!!!");
+        }
+
 
 
     }
