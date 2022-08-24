@@ -2,7 +2,8 @@ package com.cydeo.tests.day2_locators_getText_getAttribute;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.opera.OperaDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
 
 public class T1_CydeoVerification {
 
@@ -12,12 +13,14 @@ public class T1_CydeoVerification {
         //1. Opern Chrome browser
 
         WebDriverManager.chromedriver().setup();
-        WebDriver driver = new OperaDriver();
-        driver.manage().window().maximize();
+        WebDriver driver = new ChromeDriver();
+       // driver.manage().window().maximize();
 
-        // 2. Go to https://parctice.cydeo.com
+        // 2. Go to http://practice.cydeo.com
 
-        driver.navigate().to("https://parctice.cydeo.com");
+        //driver.get("http://practice.cydeo.com");
+
+        driver.navigate().to("http://practice.cydeo.com");
 
         // 3. Verify URL contains
 
@@ -33,6 +36,24 @@ public class T1_CydeoVerification {
         }else {
             System.out.println("URL verification FAILED!!!");
         }
+
+        // 4. Verify tile:
+        // Expected: Practice
+
+        String expectedTitle = "Practice";
+        String actualTitle = driver.getTitle();
+
+        if (actualTitle.equals(expectedTitle)){
+            System.out.println("Title verification PASSED!");
+        }else {
+            System.out.println("Title verification FAILED!!!");
+        }
+
+        driver.manage().window().maximize();
+
+        driver.close();
+
+
 
     }
 }
